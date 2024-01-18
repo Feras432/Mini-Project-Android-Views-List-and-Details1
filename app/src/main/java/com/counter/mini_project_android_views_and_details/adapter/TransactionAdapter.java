@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.counter.mini_project_android_views_and_details.R;
-import com.counter.mini_project_android_views_and_details.data.Transactions;
+import com.counter.mini_project_android_views_and_details.data.Transaction;
 import com.counter.mini_project_android_views_and_details.listener.TransactionItemListener;
 
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionsViewHolder> {
 
 
-//    private static ArrayList<Transactions> transactionList;
+
     private static TransactionItemListener transactionItemListener;
-    private static ArrayList<Transactions> transactionsList;
-    public TransactionAdapter (ArrayList<Transactions> transactionsList, TransactionItemListener transactionItemListener){
+    private static ArrayList<Transaction> transactionsList;
+    public TransactionAdapter (ArrayList<Transaction> transactionsList, TransactionItemListener transactionItemListener){
         this.transactionsList = transactionsList;
         this.transactionItemListener = transactionItemListener;
 
@@ -33,7 +33,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     }
     @Override
     public void onBindViewHolder(@NonNull TransactionAdapter.TransactionsViewHolder holder, int position) {
-        Transactions transactions1 = transactionsList.get(position);
+        Transaction transactions1 = transactionsList.get(position);
         holder.dateViewTextView.setText(String.valueOf(transactions1.getDate()));
         holder.typeViewTextView.setText(String.valueOf(transactions1.getType()));
         holder.amountViewTextView.setText(String.valueOf(transactions1.getAmount()));

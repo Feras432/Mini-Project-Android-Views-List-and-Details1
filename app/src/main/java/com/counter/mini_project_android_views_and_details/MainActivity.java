@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.counter.mini_project_android_views_and_details.adapter.TransactionAdapter;
-import com.counter.mini_project_android_views_and_details.data.Transactions;
+import com.counter.mini_project_android_views_and_details.data.Transaction;
 import com.counter.mini_project_android_views_and_details.listener.TransactionItemListener;
 import com.counter.mini_project_android_views_and_details.repository.TransactionsRepo;
 
@@ -16,8 +16,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements TransactionItemListener {
 
+    public static final String BANK_TRANSACTION_KEY = "BANK_TRANSACTION_KEY";
     RecyclerView transactionsRecyclerView;
-    ArrayList<Transactions> transactions = new ArrayList<>();
+    ArrayList<Transaction> transactions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +30,6 @@ public class MainActivity extends AppCompatActivity implements TransactionItemLi
 
         transactions = TransactionsRepo.getInstance().generateDummyTransactions();
 
-//        TransactionItemListener transactionItemListener = new TransactionItemListener() {
-//            @Override
-//            public void onTransactionItemClicked(Transactions transaction) {
-//
-//            }
-//        };
-
         TransactionAdapter transactionAdapter = new TransactionAdapter(transactions, this);
 
 
@@ -44,10 +38,12 @@ public class MainActivity extends AppCompatActivity implements TransactionItemLi
     }
 
     @Override
-    public void onTransactionItemClicked(Transactions transactions) {
+    public void onTransactionItemClicked(Transaction transactions1) {
         Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-        // TODO sent bankAccount to the DetailsActivity
+        intent.putExtra(BANK_TRANSACTION_KEY, transactions1);
         startActivity(intent);
+
+
     }
 
 }

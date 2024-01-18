@@ -1,12 +1,14 @@
 package com.counter.mini_project_android_views_and_details.data;
 
-public class Transactions {
+import java.io.Serializable;
+
+public class Transaction implements Serializable {
     private int id, account;
     public  String date;
     public double amount, balance;
     private  type type;
 
-    public Transactions(int id, int account, String date, double amount, double balance, type type) {
+    public Transaction(int id, int account, String date, double amount, double balance, type type) {
         this.id = id;
         this.account = account;
         this.date = date;
